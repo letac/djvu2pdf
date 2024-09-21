@@ -16,10 +16,14 @@ is no embedded text.
 
 - [`djvused`](http://djvu.sourceforge.net/): To extract metadata like the TOC and the number of pages.
 - [`ddjvu`](http://djvu.sourceforge.net/): To split the djvu file into tiff pages.
-- [`djvu2hocr`](http://jwilk.net/software/ocrodjvu): To extract the OCR layers for `pdfbeads`.
+- [`djvu2hocr`](https://github.com/FriedrichFroebel/ocrodjvu): To extract the OCR layers for `pdfbeads`.
 - [`pdfbeads`](http://rubygems.org/gems/pdfbeads): To combine TIFF images and OCR content into a highly
   compressed pdf file.
 - `djvu2pdf_toc_parser.py`: A python script to convert the TOC for `pdfbeads`.
+
+# Optional
+
+- [`jbig2enc`](https://github.com/agl/jbig2enc)
 
 # TODO
 

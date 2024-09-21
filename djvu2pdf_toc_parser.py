@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import sys
 
@@ -82,4 +82,4 @@ if __name__ == '__main__':
         # general pattern expected by `parse_sexp`. 
         toc_output = []
         parse_sexp(toc_input[1:], toc_output, '', 0) 
-        print('\n'.join(toc_output))
+        print(('\n'.join(toc_output)))
