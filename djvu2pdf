@@ -1,6 +1,12 @@
 #!/bin/bash
 
 
+if [ $# -ne 2 ] ; then
+    echo "Usege:" >&2
+    echo "djvu2pdf [input djvu] [output pdf]" >&2
+    exit 1
+fi
+
 #
 # Set up paths
 # 
@@ -9,6 +15,21 @@ initial_directory=$(pwd)
 file_in=$(readlink -f "$1")
 file_out=$(readlink -f "$2")
 file_out_basename=$(basename "$file_out")
+
+if [ ! -f "$file_in" ]; then
+    echo "Can not find file: $file_in" >&2
+    exit 1
+fi
+
+if [ ! -r "$file_in" ] ; then
+    echo "Can not read file: $file_in" >&2
+    exit 1
+fi
+
+if ! touch "$file_out" 2>/dev/null ; then
+    echo "Can not write file: $file_out" >&2
+    exit 1
+fi
 
 #
 # Set up the temporary storage

@@ -27,17 +27,7 @@ is no embedded text.
 
 # TODO
 
-## Handle arguments
-
-The basic use case for now is only `djvu2pdf [input] [output]`, but we
-should at least make sure that
-
-- exactly two arguments are provided
-- `input` exists
-- `output` is writable (otherwise we'd lose a lot of precious
-  work)
-  
-Furthermore, it might be nice to have the option to include a
+It might be nice to have the option to include a
 `pdfbeads`-compatible TOC with the input file (the indentation-based
 syntax is nice, so one might decide to write a TOC). This feature could 
 be introduced through the flag `--toc=[table of contents file]`
