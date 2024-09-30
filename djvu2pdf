@@ -1,5 +1,33 @@
 #!/bin/bash
 
+not_installed=0
+if ! type ddjvu >/dev/null 2>/dev/null; then
+  echo "ddjvu not installad" >&2
+  not_installed=1
+fi
+if ! type tiffsplit >/dev/null 2>/dev/null; then
+  echo "tiffsplit not installad" >&2
+  not_installed=1
+fi
+if ! type djvused >/dev/null 2>/dev/null; then
+  echo "djvused not installad" >&2
+  not_installed=1
+fi
+if ! type djvu2hocr >/dev/null 2>/dev/null; then
+  echo "djvu2hocr not installad" >&2
+  not_installed=1
+fi
+if ! type python3 >/dev/null 2>/dev/null; then
+  echo "python3 not installad" >&2
+  not_installed=1
+fi
+if ! type pdfbeads >/dev/null 2>/dev/null; then
+  echo "pdfbeads not installad" >&2
+  not_installed=1
+fi
+if [ $not_installed -eq 1 ] ; then
+  exit 1
+fi
 
 if [ $# -ne 2 ] ; then
     echo "Usege:" >&2

@@ -36,8 +36,5 @@ be introduced through the flag `--toc=[table of contents file]`
 ## Handle errors along the way
 
 - If `input` is not a djvu file, then we should fail instantly.
-- If some dependency isn't installed, we should quit immediately (but
-  it is not our job to make sure they are set up correctly if they are
-  there).
 - If there is no embedded text then we should not output any temporary
   html files along the way.
