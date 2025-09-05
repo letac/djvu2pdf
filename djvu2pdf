@@ -42,7 +42,6 @@ fi
 initial_directory=$(pwd)
 file_in=$(readlink -f "$1")
 file_out=$(readlink -f "$2")
-file_out_basename=$(basename "$file_out")
 
 if [ ! -f "$file_in" ]; then
     echo "Can not find file: $file_in" >&2
@@ -64,12 +63,12 @@ fi
 # 
 
 tmpdir=$(mktemp -d)
-cd $tmpdir
+cd "$tmpdir"
 
 function cleanup() 
 {
-    rm -rf $tmpdir
-    cd $initial_directory
+    rm -rf "$tmpdir"
+    cd "$initial_directory"
 }
 trap "cleanup" EXIT # makes sure we clean up after ourselves
 
@@ -84,9 +83,9 @@ num_pages=$(djvused -e 'n' "$file_in")
 strlen_num_pages="${#num_pages}"
 i=0
 for page_alpha in tmp_page_*; do
-    i=$[i+1]
+    i=$((i+1))
     j=$(printf "%0${strlen_num_pages}d" $i)
-    mv $page_alpha tmp_page_${j}.tiff
+    mv "$page_alpha" tmp_page_"${j}".tiff
 
     # OCR content needs to have one html file per page for `pdfbeads`;
     # `djvu2hocr` is capable of extracting it all at once, but then it
@@ -95,7 +94,7 @@ for page_alpha in tmp_page_*; do
     # s/ocrx/ocr/g substitution is a small hack to make `pdfbeads`
     # understand the output from `djvu2hocr`.
 
-    djvu2hocr "$file_in" -p $i | sed 's/ocrx/ocr/g' > tmp_page_${j}.html
+    djvu2hocr "$file_in" -p $i | sed 's/ocrx/ocr/g' > tmp_page_"${j}".html
 done
 
 
